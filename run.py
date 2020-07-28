@@ -56,10 +56,10 @@ if __name__ == '__main__':
     detection_graph, sess = detection_rectangles.load_inference_graph()
     while cap.isOpened():
         ret, image_np = cap.read()
-        try:
-            image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
-        except:
-            print("Error converting to RGB")
+        # try:
+        #     image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
+        # except:
+        #     print("Error converting to RGB")
 
         # 1 - Get bounding boxes for seen hands
         relative_boxes, scores, classes = detection_rectangles.detect_objects(image_np, detection_graph, sess)

@@ -44,7 +44,7 @@ Build image:
 `docker build --tag handtracking:1.0 .`
 
 Start container:
-`docker run -it --rm --device /dev/video0:/dev/video0 -v $(pwd):/hand_standalone handtracking:1.0`
+`docker run -it --rm --gpus all --device /dev/video0:/dev/video0 -v $(pwd):/hand_standalone handtracking:1.0`
 
 Then run python script inside container:
 `python3 run.py`

@@ -49,8 +49,8 @@ if __name__ == '__main__':
     num_frames = 0
 
     detection_graph, sess = detection_rectangles.load_inference_graph()
-    while True:
-        image_np = cv2.imread("WIN_20200728_10_54_05_Pro.jpg", cv2.IMREAD_COLOR) # cap.read()
+    while cap.isOpened():
+        image_np = cap.read()
         try:
             image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
         except:

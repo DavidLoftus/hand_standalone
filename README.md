@@ -36,3 +36,15 @@ Only left hands are find correctly. This is because the neural network the Handt
 
 ### Future improvements
 Stay tuned! Following versions coming soon, enabling left and right hand detection and a own Neural Network to make a fully contained project :)
+
+
+# Steps for Docker container
+
+Build image:
+`docker build --tag handtracking:1.0 .`
+
+Start container:
+`docker run -it --rm --device /dev/video0:/dev/video0 -v $(pwd):/hand_standalone handtracking:1.0`
+
+Then run python script inside container:
+`python3 run.py`

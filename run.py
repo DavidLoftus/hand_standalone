@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     detection_graph, sess = detection_rectangles.load_inference_graph()
     while True:
-        ret, image_np = cap.read()
+        image_np = cv2.imread("WIN_20200728_10_54_05_Pro.jpg", cv2.IMREAD_COLOR) # cap.read()
         try:
             image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
         except:
@@ -79,3 +79,5 @@ if __name__ == '__main__':
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cv2.destroyAllWindows()
             break
+
+        print("FPS =", fps)

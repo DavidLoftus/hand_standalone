@@ -1,1 +1,1 @@
-OPENPOSE_PATH = "/home/marcelo/openpose"
+OPENPOSE_PATH = "/openpose"

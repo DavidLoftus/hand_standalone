@@ -23,6 +23,7 @@ try:
         # sys.path.append('../../python');
         # If you run `make install` (default path is `/usr/local/python` for Ubuntu), you can also access the OpenPose/python module from there.q This will install OpenPose and the python library at your desired installation path. Ensure that this is in your python path in order to use it.
         sys.path.append('/usr/local/python')
+        sys.path.append(os.path.join(config.OPENPOSE_PATH, "build/python"))
         from openpose import pyopenpose as op
 except ImportError as e:
     print('Error: OpenPose library could not be found. Did you enable `BUILD_PYTHON` in CMake and have this Python script in the right folder?')
@@ -30,7 +31,7 @@ except ImportError as e:
 
 
 params = dict()
-params["model_folder"] = config.OPENPOSE_PATH + "/models"
+params["model_folder"] = os.path.join(config.OPENPOSE_PATH, "models")
 params["hand"] = True
 params["hand_detector"] = 2
 # params["hand_net_resolution"] = "184x184"

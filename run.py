@@ -45,12 +45,17 @@ if __name__ == '__main__':
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, args.height)
     im_width, im_height = (cap.get(3), cap.get(4))
 
+    
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    print('output.mp4', fourcc, 20.0, (im_width,im_height))
+    out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (int(im_width),int(im_height)))
+
     start_time = datetime.datetime.now()
     num_frames = 0
 
     detection_graph, sess = detection_rectangles.load_inference_graph()
     while cap.isOpened():
-        image_np = cap.read()
+        ret, image_np = cap.read()
         try:
             image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
         except:
@@ -75,6 +80,8 @@ if __name__ == '__main__':
         elapsed_time = (datetime.datetime.now() - start_time).total_seconds()
         fps = num_frames / elapsed_time
         draw_util.draw_fps_on_image("FPS : " + str(int(fps)), image_np)
+
+        out.write(image_np)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cv2.destroyAllWindows()
